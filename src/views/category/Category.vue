@@ -1,0 +1,122 @@
+<template>
+  <div class="content">
+      <ul>
+      <li>1qwe</li>
+      <li>2qwe</li>
+      <li>3qwe</li>
+      <li>4qwe</li>
+      <li>5qwe</li>
+      <li>6qwe</li>
+      <li>7qwe</li>
+      <li>8qwe</li>
+      <li>9qwe</li>
+      <li>10qwe</li>
+      <li>11qwe</li>
+      <li>12qwe</li>
+      <li>13qwe</li>
+      <li>14qwe</li>
+      <li>15qwe</li>
+      <li>16qwe</li>
+      <li>17qwe</li>
+      <li>18qwe</li>
+      <li>19qwe</li>
+      <li>20qwe</li>
+      <li>21qwe</li>
+      <li>22qwe</li>
+      <li>23qwe</li>
+      <li>24qwe</li>
+      <li>25qwe</li>
+      <li>26qwe</li>
+      <li>27qwe</li>
+      <li>28qwe</li>
+      <li>29qwe</li>
+      <li>30qwe</li>
+      <li>31qwe</li>
+      <li>32qwe</li>
+      <li>33qwe</li>
+      <li>34qwe</li>
+      <li>35qwe</li>
+      <li>36qwe</li>
+      <li>37qwe</li>
+      <li>38qwe</li>
+      <li>39qwe</li>
+      <li>40qwe</li>
+      <li>41qwe</li>
+      <li>42qwe</li>
+      <li>43qwe</li>
+      <li>44qwe</li>
+      <li>45qwe</li>
+      <li>46qwe</li>
+      <li>47qwe</li>
+      <li>48qwe</li>
+      <li>49qwe</li>
+      <li>50qwe</li>
+      <li>51qwe</li>
+      <li>52qwe</li>
+      <li>53qwe</li>
+      <li>54qwe</li>
+      <li>55qwe</li>
+      <li>56qwe</li>
+      <li>57qwe</li>
+      <li>58qwe</li>
+      <li>59qwe</li>
+      <li>60qwe</li>
+      <li>61qwe</li>
+      <li>62qwe</li>
+      <li>63qwe</li>
+      <li>64qwe</li>
+      <li>65qwe</li>
+      <li>66qwe</li>
+      <li>67qwe</li>
+      <li>68qwe</li>
+      <li>69qwe</li>
+      <li>70qwe</li>
+      <li>71qwe</li>
+      <li>72qwe</li>
+      <li>73qwe</li>
+      <li>74qwe</li>
+      <li>75qwe</li>
+      <li>76qwe</li>
+      <li>77qwe</li>
+      <li>78qwe</li>
+      <li>79qwe</li>
+      <li>80qwe</li>
+      <li>81qwe</li>
+      <li>82qwe</li>
+      <li>83qwe</li>
+      <li>84qwe</li>
+      <li>85qwe</li>
+      <li>86qwe</li>
+      <li>87qwe</li>
+      <li>88qwe</li>
+      <li>89qwe</li>
+      <li>90qwe</li>
+      <li>91qwe</li>
+      <li>92qwe</li>
+      <li>93qwe</li>
+      <li>94qwe</li>
+      <li>95qwe</li>
+      <li>96qwe</li>
+      <li>97qwe</li>
+      <li>98qwe</li>
+      <li>99qwe</li>
+      <li>100qwe</li>
+   </ul>
+  </div>
+</template>
+
+<script>
+   import BScroll from 'better-scroll'
+   export default {
+      name: 'Category',
+      created() {
+         new BScroll('.content',{
+
+         })
+      }
+  }
+</script>
+
+<style scoped>
+
+</style>
