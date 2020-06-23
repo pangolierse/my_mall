@@ -109,10 +109,8 @@
    import BScroll from 'better-scroll'
    export default {
       name: 'Category',
-      created() {
-         new BScroll('.content',{
-
-         })
+      mounted() {
+         
       }
   }
 </script>

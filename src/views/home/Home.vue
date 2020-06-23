@@ -3,18 +3,24 @@
     <nav-bar class="home-nav">
       <template v-slot:center>购物车</template>
     </nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <recommend-view :recommends="recommends"></recommend-view>
-    <feature-view></feature-view>
-    <tab-controll @tabClick="tabClick" :titles="titles"></tab-controll>
-    <goods-list :goods="showList"></goods-list>
+    <scroll class="content" ref="scroll">
+      <home-swiper :banners="banners"></home-swiper>
+      <recommend-view :recommends="recommends"></recommend-view>
+      <feature-view></feature-view>
+      <tab-controll @tabClick="tabClick" :titles="titles"></tab-controll>
+      <goods-list :goods="showList"></goods-list>
+    </scroll>
+    <back-top @click.native="backTop"></back-top>
   </div>
 </template>
 
 <script>
 import NavBar from 'components/common/navbar/NavBar'
+import Scroll from 'components/common/scroll/Scroll'
+
 import TabControll from 'components/content/tabControll/TabControll'
 import GoodsList from 'components/content/goodsList/GoodsList'
+import BackTop from 'components/content/backTop/BackTop'
 
 import HomeSwiper from './childComps/HomeSwiper'
 import RecommendView from './childComps/RecommendView'
@@ -26,8 +32,11 @@ export default {
   name: "Home",
   components: {
     NavBar,
+    Scroll,
+
     TabControll,
     GoodsList,
+    BackTop,
 
     HomeSwiper,
     RecommendView,
@@ -86,6 +95,10 @@ export default {
       }
       this.listState = goods[index]
     },
+    backTop(){
+      console.log('backtop');
+      this.$refs.scroll.scrollTo(0,0)
+    },
     /* 
       网络请求方法
     */
@@ -110,6 +123,7 @@ export default {
 <style scoped lang="less">
    #home{
      padding-top: 44px;
+     position: relative;
       .home-nav{
         background-color: @color-tint;
         color: #fff;
@@ -118,6 +132,11 @@ export default {
         top: 0;
         right: 0;
         left: 0;
+      }
+      .content{
+        height: @view-height;
+        // position: absolute;
+        overflow: hidden;
       }
    }
 </style>
