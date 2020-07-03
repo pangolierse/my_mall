@@ -2,15 +2,12 @@
   <div class="nav-bar">
     <div class="left">
       <slot name="left"></slot>
-      <!-- <template v-slot: left></template> -->
     </div>
     <div class="center">
       <slot name="center"></slot>
-      <!-- <template v-slot: center></template> -->
     </div>
     <div class="right">
       <slot name="right"></slot>
-      <!-- <template v-slot: right></template> -->
     </div>
   </div>
 </template>
@@ -30,6 +27,7 @@
     .center{
       flex-grow: 1;
       // background-color: red;
+      // display: flex;
       text-align: center;
     }
     .left,.right{

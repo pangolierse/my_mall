@@ -1,5 +1,5 @@
 <template>
-  <div id="tab-controll">
+  <div id="tab-controll" >
     <div v-for="(item, index) in titles" 
       :key="item" 
       :class="{active: index === currentIndex}"
@@ -39,7 +39,6 @@
     display: flex;
     font-size: 15px;
     justify-content: space-around;
-    position: sticky;
     top: 44px;
     background-color: #fff;
     div{
@@ -50,5 +49,6 @@
       color: palevioletred;
       border-bottom: 2px solid palevioletred;
     }
+
   }
 </style>
