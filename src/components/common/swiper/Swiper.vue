@@ -1,13 +1,13 @@
 <template>
     <div id="hy-swiper">
-      <div class="swiper" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+      <div class="swiper" ref="swiper" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
         <slot></slot>
       </div>
       <slot name="indicator">
       </slot>
       <div class="indicator">
         <slot name="indicator" v-if="showIndicator && slideCount>1">
-          <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
+          <div ref="slide" v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
         </slot>
       </div>
     </div>
@@ -41,13 +41,16 @@
         swiperStyle: {}, // swiper样式
         currentIndex: 1, // 当前的index
         scrolling: false, // 是否正在滚动
+        activeTimer: 0,
       }
+    },
+    destroyed(){
+      clearTimeout(this.activeTimer)
     },
     mounted: function () {
       // 1.操作DOM, 在前后添加Slide
-      setTimeout(() => {
+      this.activeTimer = setTimeout(() => {
         this.handleDom();
-
         // 2.开启定时器
         this.startTimer();
       }, 3000)
@@ -118,12 +121,10 @@
        */
 		  handleDom: function () {
         // 1.获取要操作的元素
-        let swiperEl = document.querySelector('.swiper');
-        let slidesEls = swiperEl.getElementsByClassName('slide');
-
+        let swiperEl = this.$refs.swiper //document.querySelector('.swiper');
+        let slidesEls = swiperEl.getElementsByClassName('slide');//this.$refs.slide //
         // 2.保存个数
         this.slideCount = slidesEls.length;
-
         // 3.如果大于1个, 那么在前后分别添加一个slide
         if (this.slideCount > 1) {
           let cloneFirst = slidesEls[0].cloneNode(true);

@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav">
-      <template v-slot:center>购物车</template>
+      <template v-slot:center>首页</template>
     </nav-bar>
     <tab-controll @tabClick="tabClick" :titles="titles" ref="tabControll1" v-show="isTabFixed" class="tab-control" ></tab-controll>
     <scroll class="content" ref="scroll" 
@@ -33,6 +33,8 @@ import RecommendView from './childComps/RecommendView'
 import FeatureView from './childComps/FeatureView'
 
 import {debounce} from 'common/utils'
+import {itemListenerMixin} from 'common/mixins'
+
 import { getHomeMultidata,getHomeGoods } from 'network/home'
 
 export default {
@@ -89,18 +91,13 @@ export default {
     this.getGoods('sell')
     
   },
-  mounted(){
-    const refresh = debounce(this.$refs.scroll.refresh,200)
-    this.$bus.$on('itemImageLoad' ,() => {
-      this.$refs.scroll && refresh();
-    })
-    
-  },
+  mixins:[itemListenerMixin],
   activated() {
     this.$refs.scroll.scrollTo(0,this.saveY,0)
   },
   deactivated() {
     this.saveY = this.$refs.scroll.scroll.y
+    this.$bus.$off('itemImgLoad',itemImgListener)
   },
   methods: {
     /* 
@@ -123,11 +120,9 @@ export default {
       this.$refs.tabControll2.currentIndex = index;
     },
     backTop(){
-      // console.log('backtop');
       this.$refs.scroll.scrollTo(0,0)
     },
     contentScroll(position){
-      // console.log(position);
       this.isShowBackTop = position.y < -1000
 
       this.isTabFixed = (-position.y) > this.tabOffsetTop
@@ -137,6 +132,9 @@ export default {
     },
     swiperImageLoad(){
       this.tabOffsetTop = this.$refs.tabControll2.$el.offsetTop
+    },
+    itemImgListener(){
+      this.$refs.scroll && refresh();
     },
     /* 
       网络请求方法
